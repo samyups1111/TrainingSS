@@ -1,27 +1,30 @@
 package samyups.example.trainingss
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
-class DogAdapter: RecyclerView.Adapter<DogViewHolder>() {
-    val dogNamesList = listOf<String>("Pitbull", "chihuahua", "Golden Retriever", "Havanese")
+class DogAdapter : RecyclerView.Adapter<DogViewHolder>() {
+
+    private var dogNamesList = emptyList<String>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
         return DogViewHolder(view)
     }
+
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
-        holder.dogName.text = dogNamesList[position]
+        val dogName = dogNamesList[position]
+        holder.bind(dogName)
     }
+
     override fun getItemCount(): Int {
         return dogNamesList.size
     }
-}
-class DogViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-    var dogName : TextView
-    init {
-        dogName = itemView.findViewById(R.id.dog_name)
+
+    fun update(data: List<String>) {
+        this.dogNamesList = data
     }
 }
