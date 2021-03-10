@@ -1,6 +1,10 @@
 package samyups.example.trainingss
 
+import android.app.Activity
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 
-class AddDogNamesDialogBox : DialogFragment() {
+class AddDogNamesDialogBox() : DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
