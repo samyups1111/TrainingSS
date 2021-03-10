@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TrainingSS</string>
+    <string name="add_new_dog_breed">ADD NEW DOG BREED</string>
+    <string name="enter_dog_breed">Enter Dog Breed</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
 </resources>

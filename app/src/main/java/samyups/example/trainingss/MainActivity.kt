@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     private val dogAdapter = DogAdapter()
 
-    private val dogNamesList = listOf(
+    var dogNamesList = mutableListOf<String>(
         "Pitbull",
         "chihuahua",
         "Golden Retriever",
@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initRecyclerView()
         loadData()
+
+        fab_add.setOnClickListener {
+            val addDogDialog = AddDogNamesDialogBox()
+            addDogDialog.show(supportFragmentManager, "customDialog")
+        }
     }
 
     private fun initRecyclerView() {
