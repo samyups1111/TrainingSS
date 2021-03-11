@@ -10,11 +10,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_dogs_dialog_box.*
 import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), IAddDog {
 
     private val dogAdapter = DogAdapter()
+    private val addDogDialog = AddDogNamesDialogBox(this)
 
-    var dogNamesList = mutableListOf<String>(
+    var dogNamesList = mutableListOf(
         "Pitbull",
         "Chihuahua",
         "Golden Retriever",
@@ -25,31 +26,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initRecyclerView()
-        loadData()
+        updateData()
+        fab_add.setOnClickListener { showDialog() }
+    }
 
-        fab_add.setOnClickListener {
-            /**
-            addDogDialog = AddDogNamesDialogBox()
-            addDogDialog.show(supportFragmentManager, "customDialog") */
-
-            val addDogNamesDialogBox = LayoutInflater.from(this).inflate(R.layout.add_dogs_dialog_box, null)
-            val dialogBuilder = AlertDialog.Builder(this)
-                .setView(addDogNamesDialogBox)
-                .setTitle("Add New Dog")
-
-            val dogDialogBox = dialogBuilder.show()
-
-            addDogNamesDialogBox.submit_add_dog_button.setOnClickListener {
-                dogDialogBox.dismiss()
-                val newDogInput = addDogNamesDialogBox.enter_dog_edittext.text.toString()
-                dogNamesList.add(newDogInput)
-                Toast.makeText(this, "Dog Breed Added", Toast.LENGTH_SHORT).show()
-            }
-
-            addDogNamesDialogBox.cancel_add_dog_button.setOnClickListener {
-                dogDialogBox.dismiss()
-            }
-        }
+    override fun add(dogName: String) {
+        dogNamesList.add(dogName)
+        updateData()
     }
 
     private fun initRecyclerView() {
@@ -59,7 +42,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadData() {
+    private fun updateData() {
         dogAdapter.update(dogNamesList)
+    }
+
+    private fun showDialog() {
+        addDogDialog.show(supportFragmentManager, "customDialog")
     }
 }
