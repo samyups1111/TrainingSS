@@ -2,16 +2,22 @@ package samyups.example.trainingss
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.add_dogs_dialog_box.*
+import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), IAddDog {
 
     private val dogAdapter = DogAdapter()
+    private val addDogDialog = AddDogNamesDialogBox(this)
 
-    private val dogNamesList = listOf(
+    var dogNamesList = mutableListOf(
         "Pitbull",
-        "chihuahua",
+        "Chihuahua",
         "Golden Retriever",
         "Havanese",
     )
@@ -20,7 +26,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initRecyclerView()
-        loadData()
+        updateData()
+        fab_add.setOnClickListener { showDialog() }
+    }
+
+    override fun add(dogName: String) {
+        dogNamesList.add(dogName)
+        updateData()
     }
 
     private fun initRecyclerView() {
@@ -30,7 +42,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadData() {
+    private fun updateData() {
         dogAdapter.update(dogNamesList)
+    }
+
+    private fun showDialog() {
+        addDogDialog.show(supportFragmentManager, "customDialog")
     }
 }
