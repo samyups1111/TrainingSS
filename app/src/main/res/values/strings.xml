@@ -4,4 +4,11 @@
     <string name="enter_dog_breed">Enter Dog Breed</string>
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
+    <string name="breed">breed</string>
+    <string name="weight">weight</string>
+    <string name="height">height</string>
+    <string name="max_age">max age</string>
+    <string name="enter_dog_weight">Enter Dog Weight</string>
+    <string name="enter_dog_height">Enter Dog Height</string>
+    <string name="enter_dog_max_age">Enter Dog Max Age</string>
 </resources>
