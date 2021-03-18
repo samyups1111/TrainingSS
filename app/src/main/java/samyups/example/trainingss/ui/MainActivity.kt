@@ -13,8 +13,8 @@ import samyups.example.trainingss.util.InjectorUtils
 
 abstract class MainActivity : AppCompatActivity() {
 
-    private val dogAdapter = DogAdapter()
-    private lateinit var addDogDialog : AddDogNamesDialogBox
+    private val dogAdapter = MainRecyclerAdapter()
+    private lateinit var mainDialogBox : MainDialogBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     private fun showDialog(viewModel: MainViewModel) {
-        addDogDialog = AddDogNamesDialogBox(viewModel)
-        addDogDialog.show(supportFragmentManager, "customDialog")
+        mainDialogBox = MainDialogBox(viewModel)
+        mainDialogBox.show(supportFragmentManager, "customDialog")
     }
 }

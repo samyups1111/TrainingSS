@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import samyups.example.trainingss.R
 import samyups.example.trainingss.data.Dogs
 
-class DogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private var dogBreedTextView: TextView = itemView.findViewById(R.id.dog_breed_textview)
     private var dogWeightTextView: TextView = itemView.findViewById(R.id.dog_weight_textview)

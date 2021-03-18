@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 import samyups.example.trainingss.R
 import samyups.example.trainingss.data.Dogs
 
-class AddDogNamesDialogBox(
+class MainDialogBox(
     private val viewModel: MainViewModel
 ) : DialogFragment() {
 
