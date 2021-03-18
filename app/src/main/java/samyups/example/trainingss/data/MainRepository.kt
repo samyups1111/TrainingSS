@@ -1,20 +1,31 @@
 package samyups.example.trainingss.data
 
-class MainRepository private constructor (private val mainDao: MainDao) {
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
-    fun addDog(dog: Dogs) {
-        mainDao.addDog(dog)
+class MainRepository private constructor () {
+
+    private val dogsList = mutableListOf<Dog>()
+    private val dogs = MutableLiveData<List<Dog>>()
+
+    init {
+        dogs.value = dogsList
     }
 
-    fun getDogsList() = mainDao.getDogsList()
+    fun getDogsList() = dogs as LiveData<List<Dog>>
+
+    fun addDog(dog: Dog) {
+        dogsList.add(dog)
+        dogs.value = dogsList
+    }
 
 
     companion object {
         @Volatile private var instance : MainRepository? = null
 
-        fun getInstance(mainDao: MainDao) =
+        fun getInstance() =
             instance ?: synchronized(this) {
-                instance ?: MainRepository(mainDao).also { instance = it }
+                instance ?: MainRepository().also { instance = it }
             }
     }
 }

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initRecyclerView()
-        initUI(mainAdapter)
+        initUI()
     }
 
     private fun initRecyclerView() {
@@ -30,18 +30,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initUI(mainAdapter: MainRecyclerAdapter) {
+    private fun initUI() {
         val factory = InjectorUtils.provideMainViewModelFactory()
         val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
         viewModel.getDogsList().observe(this, Observer {
             mainAdapter.update(it)
         })
-        fab_add.setOnClickListener { showDialog(viewModel, mainAdapter) }
+        fab_add.setOnClickListener { showDialog(viewModel) }
     }
 
-    private fun showDialog(viewModel: MainViewModel, mainAdapter: MainRecyclerAdapter) {
-        mainDialogBox = MainDialogBox(viewModel, mainAdapter)
+    private fun showDialog(viewModel: MainViewModel) {
+        mainDialogBox = MainDialogBox(viewModel)
         mainDialogBox.show(supportFragmentManager, "customDialog")
     }
 }

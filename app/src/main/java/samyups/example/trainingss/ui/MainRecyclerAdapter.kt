@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import samyups.example.trainingss.R
-import samyups.example.trainingss.data.Dogs
+import samyups.example.trainingss.data.Dog
 
 class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
-    private var dogNamesList = emptyList<Dogs>()
+    private var dogNamesList = emptyList<Dog>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
@@ -20,7 +20,7 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
         val dogWeight = dogNamesList[position].weight
         val dogHeight = dogNamesList[position].height
         val dogMaxAge = dogNamesList[position].maxAge
-        val dogData = Dogs(dogBreed, dogWeight, dogHeight, dogMaxAge)
+        val dogData = Dog(dogBreed, dogWeight, dogHeight, dogMaxAge)
         holder.bind(dogData)
     }
 
@@ -28,7 +28,7 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
         return dogNamesList.size
     }
 
-    fun update(data: List<Dogs>) {
+    fun update(data: List<Dog>) {
         this.dogNamesList = data
     }
 }

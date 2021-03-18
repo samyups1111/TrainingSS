@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import samyups.example.trainingss.R
-import samyups.example.trainingss.data.Dogs
+import samyups.example.trainingss.data.Dog
 
 class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -13,10 +13,10 @@ class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var dogHeightTextView: TextView = itemView.findViewById(R.id.dog_height_textview)
     private var dogMaxAgeTextView: TextView = itemView.findViewById(R.id.dog_max_age_textview)
 
-    fun bind(dogs: Dogs) {
-        dogBreedTextView.text = dogs.breed
-        dogWeightTextView.text = dogs.weight.toString()
-        dogHeightTextView.text = dogs.height.toString()
-        dogMaxAgeTextView.text = dogs.maxAge.toString()
+    fun bind(dog: Dog) {
+        dogBreedTextView.text = dog.breed
+        dogWeightTextView.text = dog.weight.toString()
+        dogHeightTextView.text = dog.height.toString()
+        dogMaxAgeTextView.text = dog.maxAge.toString()
     }
 }

@@ -1,8 +1,6 @@
 package samyups.example.trainingss.data
 
-// model class
-
-data class Dogs(
+data class Dog(
     val breed: String,
     val height: Long,
     val weight: Long,

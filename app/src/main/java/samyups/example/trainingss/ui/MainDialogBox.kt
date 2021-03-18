@@ -9,11 +9,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 import samyups.example.trainingss.R
-import samyups.example.trainingss.data.Dogs
+import samyups.example.trainingss.data.Dog
 
 class MainDialogBox(
-    private val viewModel: MainViewModel,
-    private val mainAdapter: MainRecyclerAdapter
+    private val viewModel: MainViewModel
 ) : DialogFragment() {
 
     override fun onCreateView(
@@ -27,15 +26,8 @@ class MainDialogBox(
             container,
             false)
 
-        observeData()
         initUI(addDogDialog)
         return addDogDialog
-    }
-
-    private fun observeData() {
-        viewModel.getDogsList().observe(this, Observer {
-            mainAdapter.update(it)
-        })
     }
 
     private fun initUI(addDogDialog: View) {
@@ -49,9 +41,10 @@ class MainDialogBox(
             val newDogWeightInput = addDogDialog.enter_dog_weight_edittext.text.toString().toLongOrNull()?: 0L
             val newDogHeightInput = addDogDialog.enter_dog_height_edittext.text.toString().toLongOrNull()?: 0L
             val newDogMaxAgeInput = addDogDialog.enter_dog_maxage_edittext.text.toString().toIntOrNull()?: 0
-            val newDogInput = Dogs(newDogBreedInput, newDogWeightInput, newDogHeightInput, newDogMaxAgeInput)
+            val newDogInput = Dog(newDogBreedInput, newDogWeightInput, newDogHeightInput, newDogMaxAgeInput)
 
             viewModel.addDog(newDogInput)
+
             Toast.makeText(context, "$newDogBreedInput added", Toast.LENGTH_SHORT).show()
             dismiss()
         }
