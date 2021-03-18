@@ -6,9 +6,8 @@ class MainRepository private constructor (private val mainDao: MainDao) {
         mainDao.addDog(dog)
     }
 
-    fun getDogsList() {
-        mainDao.getDogsList()
-    }
+    fun getDogsList() = mainDao.getDogsList()
+
 
     companion object {
         @Volatile private var instance : MainRepository? = null

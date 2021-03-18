@@ -11,39 +11,37 @@ import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 import samyups.example.trainingss.*
 import samyups.example.trainingss.util.InjectorUtils
 
-abstract class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private val dogAdapter = MainRecyclerAdapter()
+    private val mainAdapter = MainRecyclerAdapter()
     private lateinit var mainDialogBox : MainDialogBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initRecyclerView()
-        initUI()
+        initUI(mainAdapter)
     }
 
     private fun initRecyclerView() {
         main_recyclerview.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = dogAdapter
+            adapter = mainAdapter
         }
     }
 
-    private fun initUI() {
-        val factory = InjectorUtils.provideDogsViewModelFactory()
+    private fun initUI(mainAdapter: MainRecyclerAdapter) {
+        val factory = InjectorUtils.provideMainViewModelFactory()
         val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
         viewModel.getDogsList().observe(this, Observer {
-            dogAdapter.update(it)
+            mainAdapter.update(it)
         })
-
-        fab_add.setOnClickListener { showDialog(viewModel) }
+        fab_add.setOnClickListener { showDialog(viewModel, mainAdapter) }
     }
 
-    private fun showDialog(viewModel: MainViewModel) {
-        mainDialogBox = MainDialogBox(viewModel)
+    private fun showDialog(viewModel: MainViewModel, mainAdapter: MainRecyclerAdapter) {
+        mainDialogBox = MainDialogBox(viewModel, mainAdapter)
         mainDialogBox.show(supportFragmentManager, "customDialog")
     }
 }

@@ -6,7 +6,7 @@ import samyups.example.trainingss.ui.MainViewModelFactory
 
 object InjectorUtils {
 
-    fun provideDogsViewModelFactory(): MainViewModelFactory {
+    fun provideMainViewModelFactory(): MainViewModelFactory {
         val mainRepository = MainRepository.getInstance(MainDatabase.getInstance().mainDao)
         return MainViewModelFactory(mainRepository)
     }
