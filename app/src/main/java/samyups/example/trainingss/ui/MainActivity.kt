@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         initRecyclerView()
         initUI()
     }
@@ -33,11 +34,13 @@ class MainActivity : AppCompatActivity() {
     private fun initUI() {
         val factory = InjectorUtils.provideMainViewModelFactory()
         val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
+        fab_add.setOnClickListener { showDialog(viewModel) }
 
         viewModel.getDogsList().observe(this, Observer {
             mainAdapter.update(it)
+            mainAdapter.notifyDataSetChanged()
         })
-        fab_add.setOnClickListener { showDialog(viewModel) }
+
     }
 
     private fun showDialog(viewModel: MainViewModel) {

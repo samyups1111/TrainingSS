@@ -1,6 +1,5 @@
 package samyups.example.trainingss.data
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class MainRepository private constructor () {
@@ -12,9 +11,10 @@ class MainRepository private constructor () {
         dogs.value = dogsList
     }
 
-    fun getDogsList() = dogs as LiveData<List<Dog>>
+    fun getDogsList() = dogs
 
     fun addDog(dog: Dog) {
+
         dogsList.add(dog)
         dogs.value = dogsList
     }

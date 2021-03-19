@@ -8,7 +8,7 @@ import samyups.example.trainingss.data.Dog
 
 class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
-    private var dogNamesList = emptyList<Dog>()
+    var dogNamesList = emptyList<Dog>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
