@@ -16,12 +16,7 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val dogBreed = dogNamesList[position].breed
-        val dogWeight = dogNamesList[position].weight
-        val dogHeight = dogNamesList[position].height
-        val dogMaxAge = dogNamesList[position].maxAge
-        val dogData = Dog(dogBreed, dogWeight, dogHeight, dogMaxAge)
-        holder.bind(dogData)
+        holder.bind(dogNamesList[position])
     }
 
     override fun getItemCount(): Int {
@@ -30,5 +25,6 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
     fun update(data: List<Dog>) {
         this.dogNamesList = data
+        notifyDataSetChanged() // Call onCreateViewHolder() right away
     }
 }

@@ -38,9 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getDogsList().observe(this, Observer {
             mainAdapter.update(it)
-            mainAdapter.notifyDataSetChanged()
         })
-
     }
 
     private fun showDialog(viewModel: MainViewModel) {
