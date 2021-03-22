@@ -2,12 +2,17 @@ package samyups.example.trainingss.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import samyups.example.trainingss.data.MainRepository
 import samyups.example.trainingss.data.Dog
 
 class MainViewModel(private val mainRepository: MainRepository): ViewModel() {
 
-    fun addDog(dog:Dog) = mainRepository.addDog(dog)
+    val getDogsList: LiveData<List<Dog>> = mainRepository.dogsList.asLiveData()
 
-    fun getDogsList() = mainRepository.getDogsList() as LiveData<List<Dog>>
+    fun addDog(dog:Dog) = viewModelScope.launch {
+        mainRepository.addDog(dog)
+    }
 }

@@ -1,19 +1,17 @@
 package samyups.example.trainingss.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.add_dogs_dialog_box.view.*
 import samyups.example.trainingss.R
 import samyups.example.trainingss.data.Dog
 
 class MainDialogBox(
-    private val viewModel: MainViewModel
+    private val mainViewModel: MainViewModel
 ) : DialogFragment() {
 
     override fun onCreateView(
@@ -44,7 +42,7 @@ class MainDialogBox(
             val newDogMaxAgeInput = addDogDialog.enter_dog_maxage_edittext.text.toString().toIntOrNull()?: 0
             val newDogInput = Dog(newDogBreedInput, newDogWeightInput, newDogHeightInput, newDogMaxAgeInput)
 
-            viewModel.addDog(newDogInput)
+            mainViewModel.addDog(newDogInput)
 
             Toast.makeText(context, "$newDogBreedInput added", Toast.LENGTH_SHORT).show()
             dismiss()
