@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MainDao {
 
-    @Query("SELECT * FROM `Dog Breeds`")
+    @Query("SELECT * FROM `DogBreeds`")
     fun getDogList(): Flow<List<Dog>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

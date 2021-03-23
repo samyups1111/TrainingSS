@@ -40,7 +40,13 @@ class MainDialogBox(
             val newDogWeightInput = addDogDialog.enter_dog_weight_edittext.text.toString().toLongOrNull()?: 0L
             val newDogHeightInput = addDogDialog.enter_dog_height_edittext.text.toString().toLongOrNull()?: 0L
             val newDogMaxAgeInput = addDogDialog.enter_dog_maxage_edittext.text.toString().toIntOrNull()?: 0
-            val newDogInput = Dog(newDogBreedInput, newDogWeightInput, newDogHeightInput, newDogMaxAgeInput)
+
+            val newDogInput = Dog(
+                0,
+                newDogBreedInput,
+                newDogWeightInput,
+                newDogHeightInput,
+                newDogMaxAgeInput)
 
             mainViewModel.addDog(newDogInput)
 
