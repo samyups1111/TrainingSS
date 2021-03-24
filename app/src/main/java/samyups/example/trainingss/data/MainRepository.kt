@@ -12,4 +12,4 @@ class MainRepository(private val mainDao: MainDao) {
     suspend fun addDog(dog: Dog) {
         mainDao.addDog(dog)
     }
-}  // How come I don't need a singleton for this repository?
+}
