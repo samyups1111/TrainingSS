@@ -11,4 +11,5 @@
     <string name="enter_dog_weight">Enter Dog Weight</string>
     <string name="enter_dog_height">Enter Dog Height</string>
     <string name="enter_dog_max_age">Enter Dog Max Age</string>
+    <string name="id">id</string>
 </resources>

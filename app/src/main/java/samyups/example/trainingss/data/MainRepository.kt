@@ -1,31 +1,15 @@
 package samyups.example.trainingss.data
 
-import androidx.lifecycle.MutableLiveData
+import androidx.annotation.WorkerThread
+import kotlinx.coroutines.flow.Flow
 
-class MainRepository private constructor () {
+class MainRepository(private val mainDao: MainDao) {
 
-    private val dogsList = mutableListOf<Dog>()
-    private val dogs = MutableLiveData<List<Dog>>()
+    val dogsList : Flow<List<Dog>> = mainDao.getDogList()
 
-    init {
-        dogs.value = dogsList
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun addDog(dog: Dog) {
+        mainDao.addDog(dog)
     }
-
-    fun getDogsList() = dogs
-
-    fun addDog(dog: Dog) {
-
-        dogsList.add(dog)
-        dogs.value = dogsList
-    }
-
-
-    companion object {
-        @Volatile private var instance : MainRepository? = null
-
-        fun getInstance() =
-            instance ?: synchronized(this) {
-                instance ?: MainRepository().also { instance = it }
-            }
-    }
-}
+}  // How come I don't need a singleton for this repository?

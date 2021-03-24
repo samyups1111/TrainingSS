@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/dog_height_textview"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:padding="16dp"
@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/dog_weight_textview"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:padding="16dp"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.0"/>
     <TextView
         android:id="@+id/dog_max_age_textview"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:padding="16dp"
