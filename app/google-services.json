@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "388291902335",
+    "project_id": "trainingss",
+    "storage_bucket": "trainingss.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388291902335:android:5e192ec4b21331e51d784a",
+        "android_client_info": {
+          "package_name": "samyups.example.trainingss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388291902335-lh9repm2utfng62don4kddk8onsl9jht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhiIkRqmvN6oILLz7He73W9UPWc08i4hQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388291902335-lh9repm2utfng62don4kddk8onsl9jht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
